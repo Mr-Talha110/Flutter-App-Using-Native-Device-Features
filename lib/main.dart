@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:native_features_app/home_page.dart';
+import 'package:get/get.dart';
+import 'package:native_features_app/screens/places_list_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,14 +11,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
        
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const HomePage()
+      home: const PlacesListScreen()
     );
   }
 }
