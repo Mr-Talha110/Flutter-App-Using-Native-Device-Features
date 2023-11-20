@@ -1,4 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:native_features_app/getx_data/great_places_getter.dart';
 import 'package:native_features_app/widgets/image_input.dart';
 
 class AddPlaceScreen extends StatefulWidget {
@@ -10,6 +14,18 @@ class AddPlaceScreen extends StatefulWidget {
 
 class _AddPlaceScreenState extends State<AddPlaceScreen> {
   TextEditingController titleController = TextEditingController();
+  File? _pickedImage;
+  void _selectImage(File pickedImage) {
+    _pickedImage = pickedImage;
+  }
+
+  void _savePlace() {
+    if (titleController.text.isEmpty || _pickedImage == null) {
+      return;
+    }
+    Get.put(GreatPlacesGetter()).addPlace(titleController.text, _pickedImage!);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,7 +51,7 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
                     decoration: const InputDecoration(hintText: 'Title'),
                   ),
                   const SizedBox(height: 10),
-                  const ImageInput(),
+                  ImageInput(onSelectImage: _selectImage),
                 ],
               ),
             ),
