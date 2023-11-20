@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:native_features_app/screens/add_place_screen.dart';
 
 class PlacesListScreen extends StatelessWidget {
   const PlacesListScreen({super.key});
@@ -15,7 +17,9 @@ class PlacesListScreen extends StatelessWidget {
           FloatingActionButton(
             elevation: 0,
             backgroundColor: Colors.transparent,
-            onPressed: (){}, child: const Icon(Icons.add, color: Colors.white,),)
+            onPressed: (){
+              Get.to(const AddPlaceScreen());
+            }, child: const Icon(Icons.add, color: Colors.white,),)
         ],
       ),
       body: const Center(child: Text('Places List Screen')),
